@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
@@ -93,35 +93,76 @@
     <section id="quiz">
         <h2>🧠 퀴즈 타임!</h2>
         <div class="question">
-            <p>Q1. 우리가 처음 여행을 간 도시는 어디였을까요?</p>
-            <button onclick="checkAnswer(this, true)">목포</button>
-            <button onclick="checkAnswer(this, false)">여수</button>
-            <button onclick="checkAnswer(this, false)">전주</button>
+            <p>Q1. 다음 중 강민정이 하루에 가장 많이 하는 말은 ?</p>
+            <button onclick="checkAnswer(this, true)">에휴</button>
+            <button onclick="checkAnswer(this, false)">에혀</button>
+            <button onclick="checkAnswer(this, false)">에혀혀</button>
         </div>
         <div class="question">
-            <p>Q2. 우리가 처음 반지를 맞춘 날은 언제일까요?</p>
-            <button onclick="checkAnswer(this, false)">2021.12.24</button>
-            <button onclick="checkAnswer(this, true)">2022.01.11</button>
-            <button onclick="checkAnswer(this, false)">2022.03.01</button>
+            <p>Q2. 다음 중 강민정이 삐졌을 때 하는 말은 ?</p>
+            <button onclick="checkAnswer(this, false)">계속 그러세요</button>
+            <button onclick="checkAnswer(this, false)">잘 지내라</button>
+            <button onclick="checkAnswer(this, true)">어</button>
         </div>
         <div class="question">
-            <p>Q3. 민정이 생일에 함께 간 여행지는 어디였나요? (2024)</p>
-            <button onclick="checkAnswer(this, false)">대전</button>
-            <button onclick="checkAnswer(this, true)">곡성</button>
-            <button onclick="checkAnswer(this, false)">경주</button>
+            <p>Q3. 다음 중 강민정의 잠 버릇은 ?</p>
+            <button onclick="checkAnswer(this, true)">코 골기</button>
+            <button onclick="checkAnswer(this, true)">이불 다 뺏어가기</button>
+            <button onclick="checkAnswer(this, false)">침대에서 떨어지기</button>
+        </div>
+        <div class="question">
+            <p>Q4. 다음 중 강민정의 "나 안 삐졌어" 속 숨겨진 뜻은 ?</p>
+            <button onclick="checkAnswer(this, false)">진짜 안 삐짐</button>
+            <button onclick="checkAnswer(this, false)">잘 모르겠음</button>
+            <button onclick="checkAnswer(this, true)">겁나 삐짐</button>
+        </div>
+        <div class="question">
+            <p>Q5. 다음 중 강민정이 듣기 싫어하는 말은 ?</p>
+            <button onclick="checkAnswer(this, true)">알아서 할게</button>
+            <button onclick="checkAnswer(this, false)">돼지</button>
+            <button onclick="checkAnswer(this, false)">닭강정</button>
+        </div>
+        <div class="question">
+            <p>Q6. 다음 중 강민정이에게 “지금 뭐해?”라고 했을 때 제일 자주 오는 답은 ?</p>
+            <button onclick="checkAnswer(this, true)">핸드폰</button>
+            <button onclick="checkAnswer(this, false)">유튜브</button>
+            <button onclick="checkAnswer(this, false)">공부</button>
+        </div>
+        <div class="question">
+            <p>Q7. 다음 중 강민정이 화났을 때 패턴은 ?</p>
+            <button onclick="checkAnswer(this, true)">물건 쌔게 놔둠</button>
+            <button onclick="checkAnswer(this, true)">욕함</button>
+            <button onclick="checkAnswer(this, true)">때림</button>
+        </div>
+        <div class="question">
+            <p>Q8. 다음 중 강민정이 평소에 잠을 자지 못하는 이유는 ?</p>
+            <button onclick="checkAnswer(this, false)">카페인</button>
+            <button onclick="checkAnswer(this, false)">핸드폰 중독</button>
+            <button onclick="checkAnswer(this, true)">내 생각하느라 ㅋ</button>
+        </div>
+        <div class="question">
+            <p>Q9. 다음 중 우리 엄마 생신은 ?</p>
+            <button onclick="checkAnswer(this, false)">12월 5일</button>
+            <button onclick="checkAnswer(this, false)">12월 15일</button>
+            <button onclick="checkAnswer(this, true)">12월 25일</button>
+        </div>
+        <div class="question">
+            <p>Q10. 다음 중 지금 내가 너한테 해주고 싶은 말은 ?</p>
+            <button onclick="checkAnswer(this, true)">민정아</button>
+            <button onclick="checkAnswer(this, true)">생일 축하해</button>
+            <button onclick="checkAnswer(this, true)">사랑해</button>
         </div>
         <p id="result"></p>
         <button class="btn" onclick="showEnding()">결과 보기</button>
     </section>
 
     <section id="ending" style="display:none; background:#fff0f6; padding:4rem 2rem; text-align:center;">
-        <h2 style="font-size:2.5rem;">🎊 지수야, 정말 고마워!</h2>
+        <h2 style="font-size:2.5rem;">🎊 민정아, 생일 축하해</h2>
         <p style="font-size:1.6rem; max-width:600px; margin:auto; line-height:1.8;">
             오늘 너를 위해 만든 이 페이지는,<br />
             우리의 모든 추억과 마음을 담은 작은 선물이야.<br />
-            앞으로도 계속 함께하고 싶어.<br /><br />
-            세상에서 제일 사랑해 💖<br />
-            - 너의 OO가 -
+            생일 축하해. <br />
+            - 승철이가 -
         </p>
     </section>
 
@@ -148,7 +189,12 @@
 
         function showEnding() {
             const result = document.getElementById("result");
-            result.innerText = `🎉 퀴즈 결과: ${score} / 10 문제 맞췄어요!`;
+            let msg = "";
+            if (score >= 9) msg = "💯 당신을 강민정 전문가로 인정합니다.";
+            else if (score >= 7) msg = "👏 거의 다 맞췄네요.";
+            else if (score >= 5) msg = "😅  평균 ?? ";
+            else msg = "🫢 강민정 삐졌을 수도 있음ㅋㅋ";
+            result.innerText = `🎉 퀴즈 결과: ${score} / 10 문제 맞춤.\n${msg}`;
             document.getElementById("ending").style.display = "block";
             document.getElementById("ending").scrollIntoView({ behavior: "smooth" });
         }
