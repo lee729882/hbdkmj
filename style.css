@@ -1,0 +1,167 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nanum Pen Script', cursive;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+.overlay {
+    background: url('https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.content {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
+.btn {
+    margin-top: 2rem;
+    background-color: #ffd700;
+    color: #333;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+    .btn:hover {
+        background-color: white;
+        color: black;
+    }
+
+/* 갤러리 */
+#gallery {
+    background: #fff8f0;
+    color: #333;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+    #gallery h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+    .photos img {
+        width: 300px;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+        .photos img:hover {
+            transform: scale(1.05);
+        }
+
+.swiper {
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.swiper-slide img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+.swiper-slide img {
+    object-fit: cover; /* 또는 contain */
+}
+
+
+/* 타임라인 */
+#timeline {
+    background: #fff5e5;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+    #timeline h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+.event {
+    background: white;
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+    .event h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+/* 퀴즈 */
+#quiz {
+    background: #f0f8ff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+    #quiz h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    #quiz p {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    #quiz button {
+        background: #ffcc00;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        margin: 0.5rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+        #quiz button:hover {
+            background: #fff176;
+        }
+
+    #quiz #result {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }

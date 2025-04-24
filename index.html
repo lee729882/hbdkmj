@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>민정아 생일 축하해 🎂</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+<body>
+    <div class="overlay">
+        <div class="content">
+            <h1>🎉 민정아, 생일 축하해! 🎉</h1>
+            <p>
+                오늘은 너를 위한 아주 특별한 날이야.<br />
+                늘 환하게 웃는 너에게<br />
+                세상에서 제일 큰 행복이 가득하길 바래! 💖
+            </p>
+            <button class="btn" onclick="document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })">📸 사진 보기</button>
+            <button class="btn" onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })">🧠 퀴즈 풀기</button>
+        </div>
+    </div>
+    <section id="gallery">
+        <h2>📸 우리 추억들</h2>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/ZVvtNWy.png" alt="목포">
+                    <p>2020.08.16 - 첫 여행 (목포)</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/7HBn2BU.png" alt="여수">
+                    <p>2021.05.05 - 처음 같이 보낸 민정이 생일 (여수)</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/UNLnWBb.png" alt="반지">
+                    <p>2022.01.11 - 처음 반지 맞춘 날</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/usr1w9g.png" alt="전주">
+                    <p>2022.02.03 - 첫 외박 + 100일 기념일 (전주)</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/q5AG4Hp.png" alt="순천">
+                    <p>2022.04.01 - 순천</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/hTd12zI.png" alt="목포2">
+                    <p>2022.04.08 - 목포</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/l2xIgTU.png" alt="여수2">
+                    <p>2022.05.06 - 같이 보내는 민정이 두 번째 생일 (여수)</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/rsB9naj.png" alt="외출">
+                    <p>2022.08.13 - 군대 입대 후 첫 외출</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/DIwAK8u.png" alt="여수3">
+                    <p>2022.12.06 - 군대 첫 휴가 (여수)</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/SZLQXZg.png" alt="대전">
+                    <p>2022.12.11 - 차타고 가장 멀리 간 (대전)</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/2ZNGZAl.jpeg" alt="곡성">
+                    <p>2024.05.06 - 같이 보내는 민정이 세 번째 생일 패러글라이딩(곡성)</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/F9PNV6s.png" alt="제주도">
+                    <p>2024.07.01 ~ 07.03 - 2박 3일 제주도 여행</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/yWG6rEN.png" alt="제주도2">
+                    <p>2024.07.01 ~ 07.03 - 2박 3일 제주도 여행</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/p4TmozY.png" alt="경주">
+                    <p>2025.02.03 - 경주</p>
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://i.imgur.com/GW2WCGD.png" alt="벚꽃">
+                    <p>2025.04.04 - 벚꽃(구례)</p>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section id="quiz">
+        <h2>🧠 퀴즈 타임!</h2>
+        <div class="question">
+            <p>Q1. 우리가 처음 여행을 간 도시는 어디였을까요?</p>
+            <button onclick="checkAnswer(this, true)">목포</button>
+            <button onclick="checkAnswer(this, false)">여수</button>
+            <button onclick="checkAnswer(this, false)">전주</button>
+        </div>
+        <div class="question">
+            <p>Q2. 우리가 처음 반지를 맞춘 날은 언제일까요?</p>
+            <button onclick="checkAnswer(this, false)">2021.12.24</button>
+            <button onclick="checkAnswer(this, true)">2022.01.11</button>
+            <button onclick="checkAnswer(this, false)">2022.03.01</button>
+        </div>
+        <div class="question">
+            <p>Q3. 민정이 생일에 함께 간 여행지는 어디였나요? (2024)</p>
+            <button onclick="checkAnswer(this, false)">대전</button>
+            <button onclick="checkAnswer(this, true)">곡성</button>
+            <button onclick="checkAnswer(this, false)">경주</button>
+        </div>
+        <p id="result"></p>
+        <button class="btn" onclick="showEnding()">결과 보기</button>
+    </section>
+
+    <section id="ending" style="display:none; background:#fff0f6; padding:4rem 2rem; text-align:center;">
+        <h2 style="font-size:2.5rem;">🎊 지수야, 정말 고마워!</h2>
+        <p style="font-size:1.6rem; max-width:600px; margin:auto; line-height:1.8;">
+            오늘 너를 위해 만든 이 페이지는,<br />
+            우리의 모든 추억과 마음을 담은 작은 선물이야.<br />
+            앞으로도 계속 함께하고 싶어.<br /><br />
+            세상에서 제일 사랑해 💖<br />
+            - 너의 OO가 -
+        </p>
+    </section>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        let score = 0;
+        let answered = 0;
+
+        function checkAnswer(btn, isCorrect) {
+            const container = btn.closest(".question");
+            if (container.classList.contains("answered")) return;
+
+            container.classList.add("answered");
+            const buttons = container.querySelectorAll("button");
+            buttons.forEach(b => b.disabled = true);
+
+            if (isCorrect) {
+                score++;
+                btn.style.backgroundColor = '#90ee90';
+            } else {
+                btn.style.backgroundColor = '#f08080';
+            }
+        }
+
+        function showEnding() {
+            const result = document.getElementById("result");
+            result.innerText = `🎉 퀴즈 결과: ${score} / 10 문제 맞췄어요!`;
+            document.getElementById("ending").style.display = "block";
+            document.getElementById("ending").scrollIntoView({ behavior: "smooth" });
+        }
+
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+</body>
+</html>
