@@ -1,4 +1,4 @@
-﻿body, html {
+body, html {
     margin: 0;
     padding: 0;
     font-family: 'Nanum Pen Script', cursive;
@@ -54,11 +54,12 @@ p {
         color: black;
     }
 
+
 /* 갤러리 */
 #gallery {
     background: #fff8f0;
     color: #333;
-    padding: 4rem 2rem;
+    padding: 1rem 1rem;
     text-align: center;
 }
 
@@ -87,8 +88,8 @@ p {
         }
 
 .swiper {
-    width: 90%;
-    max-width: 800px;
+    width: 80%;
+    max-width: 500px;
     margin: 2rem auto;
 }
 
@@ -165,3 +166,12 @@ p {
         font-size: 1.5rem;
         font-weight: bold;
     }
+    .btn-quiz {
+        margin-top: 1rem; /* 원하는 만큼 조절 가능: 2rem~4rem 추천 */
+        display: inline-block;
+    }
+.btn-quiz {
+    margin-top: 2rem;
+    display: inline-block;
+
+}
