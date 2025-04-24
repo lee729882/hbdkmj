@@ -11,14 +11,13 @@
 <body>
     <div class="overlay">
         <div class="content">
-            <h1>🎉 민정아, 생일 축하해! 🎉</h1>
+            <h1>민정아, 생일 축하해! </h1>
             <p>
-                오늘은 너를 위한 아주 특별한 날이야.<br />
-                늘 환하게 웃는 너에게<br />
-                세상에서 제일 큰 행복이 가득하길 바래! 💖
+                늘 고마워, 그리고 오늘은 너의 날이니까<br />
+                조금은 더 행복했으면 좋겠어<br />
+                생일 축하해 민정아
             </p>
-            <button class="btn" onclick="document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })">📸 사진 보기</button>
-            <button class="btn" onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })">🧠 퀴즈 풀기</button>
+            <button class="btn" onclick="document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })">다음으로</button>
         </div>
     </div>
     <section id="gallery">
@@ -88,6 +87,9 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
+        <button class="btn btn-quiz" style="margin-top: 3rem;" onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })">
+            다음으로
+        </button>
     </section>
 
     <section id="quiz">
