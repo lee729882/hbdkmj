@@ -9,23 +9,14 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <style>
-        #particles {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-    </style>
+
 </head>
 <body>
-    <div id="particles"></div>
     <div class="overlay">
         <div class="content">
             <p id="intro-typewriter"
                style="font-size:1.6rem; line-height:1.8; font-family: 'Nanum Pen Script', cursive; text-align:center;"></p>
-            <button class="btn" onclick="document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })">다음으로</button>
+            <button class="btn" onclick="document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })">다음 👉</button>
         </div>
     </div>
 
@@ -96,17 +87,25 @@
                 </div>0
             </div>
             <div class="swiper-pagination"></div>
-        </div>
-        <button class="btn btn-quiz" style="margin-top: 3rem;" onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })">
-            다음으로
-        </button>
-    </section>
+            <!-- ✅ 이 부분을 슬라이드 안으로 이동 -->
+            <div style="text-align: center; margin-top: -1rem; margin-bottom: 2rem;">
+                <button class="btn btn-quiz" onclick="document.getElementById('map-section').scrollIntoView({ behavior: 'smooth' })">
+                    다음 👉
+                </button>
+            </div>
+
+</section>
 
 
     <!-- 본문 중간 어딘가에 -->
     <section id="map-section">
-        <h2>🗺️ 우리가 함께한 여행지</h2>
+        <h2 style="text-align: center; font-family: 'Nanum Pen Script', cursive; font-size: 2.4rem; margin-bottom: 1rem;">
+            🗺️ 우리가 함께한 여행지
+        </h2>
         <div id="map" style="height: 500px; border-radius: 20px; margin-top: 1rem;"></div>
+        <button class="btn btn-quiz" onclick="document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' })">
+            다음 👉
+        </button>
     </section>
     
     <script>
@@ -349,40 +348,6 @@
                 delay: 3000,
                 disableOnInteraction: false,
             },
-        });
-    </script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            tsParticles.load("particles", {
-                fullScreen: {
-                    enable: false
-                },
-                particles: {
-                    number: { value: 40 },
-                    shape: {
-                        type: "char",
-                        character: {
-                            value: ["❤"],
-                            font: "Verdana",
-                            style: "",
-                            weight: "400"
-                        }
-                    },
-                    size: { value: 16 },
-                    color: { value: "#ff7eb9" },
-                    opacity: { value: 0.7 },
-                    move: {
-                        enable: true,
-                        speed: 1,
-                        direction: "bottom",
-                        outModes: { default: "out" }
-                    }
-                },
-                detectRetina: true
-            });
         });
     </script>
 
