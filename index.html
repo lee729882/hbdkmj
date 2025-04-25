@@ -7,19 +7,29 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
+    <div id="particles"></div>
     <div class="overlay">
         <div class="content">
-            <h1>민정아, 생일 축하해! </h1>
-            <p>
-                늘 고마워, 그리고 오늘은 너의 날이니까<br />
-                조금은 더 행복했으면 좋겠어<br />
-                생일 축하해 민정아
-            </p>
+            <p id="intro-typewriter"
+               style="font-size:1.6rem; line-height:1.8; font-family: 'Nanum Pen Script', cursive; text-align:center;"></p>
             <button class="btn" onclick="document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })">다음으로</button>
         </div>
     </div>
+
+
     <section id="gallery">
         <h2>📸 우리 추억들</h2>
         <div class="swiper mySwiper">
@@ -83,7 +93,7 @@
                 <div class="swiper-slide">
                     <img src="https://i.imgur.com/GW2WCGD.png" alt="벚꽃">
                     <p>2025.04.04 - 벚꽃(구례)</p>
-                </div>
+                </div>0
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -92,6 +102,71 @@
         </button>
     </section>
 
+
+    <!-- 본문 중간 어딘가에 -->
+    <section id="map-section">
+        <h2>🗺️ 우리가 함께한 여행지</h2>
+        <div id="map" style="height: 500px; border-radius: 20px; margin-top: 1rem;"></div>
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const map = L.map('map').setView([35.5, 127.8], 7); // 대한민국 중심 좌표
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; 여행지도',
+                maxZoom: 18,
+            }).addTo(map);
+
+            const places = [
+                { name: "목포", lat: 34.8118, lng: 126.3922, img: "https://i.imgur.com/ZVvtNWy.png", date: "2020.08.16", msg: "우리의 첫 여행지, 목포 💕" },
+                { name: "여수", lat: 34.7604, lng: 127.6622, img: "https://i.imgur.com/7HBn2BU.png", date: "2021.05.05", msg: "민정이 생일을 보낸 여수 🎂" },
+                { name: "전주", lat: 35.8242, lng: 127.1480, img: "https://i.imgur.com/usr1w9g.png", date: "2022.02.03", msg: "100일 기념 외박, 전주! 🍲" },
+                { name: "순천", lat: 34.9506, lng: 127.4872, img: "https://i.imgur.com/q5AG4Hp.png", date: "2022.04.01", msg: "순천 데이트 🌳" },
+                { name: "목포 (두 번째)", lat: 34.816, lng: 126.396, img: "https://i.imgur.com/hTd12zI.png", date: "2022.04.08", msg: "목포 재방문 😊" },
+                { name: "여수 (두 번째)", lat: 34.765, lng: 127.666, img: "https://i.imgur.com/l2xIgTU.png", date: "2022.05.06", msg: "민정이 두 번째 생일 💕" },
+                { name: "외출 (일산)", lat: 37.6762, lng: 126.7478, img: "https://i.imgur.com/rsB9naj.png", date: "2022.08.13", msg: "입대 후 첫 외출, 일산에서 만난 날 💂‍♂️" },
+                { name: "여수 (세 번째)", lat: 34.770, lng: 127.668, img: "https://i.imgur.com/DIwAK8u.png", date: "2022.12.06", msg: "군대 첫 휴가 여수 💂‍♂️" },
+                { name: "대전", lat: 36.3504, lng: 127.3845, img: "https://i.imgur.com/SZLQXZg.png", date: "2022.12.11", msg: "차 타고 제일 멀리 갔던 대전 🚗" },
+                { name: "곡성", lat: 35.2801, lng: 127.2903, img: "https://i.imgur.com/2ZNGZAl.jpeg", date: "2024.05.06", msg: "생일 맞이 패러글라이딩 in 곡성! 🪂" },
+                { name: "제주도", lat: 33.4996, lng: 126.5312, img: "https://i.imgur.com/F9PNV6s.png", date: "2024.07.01~03", msg: "2박 3일 제주도 여행! 🌴" },
+                { name: "제주도 (또 다른 추억)", lat: 33.494, lng: 126.535, img: "https://i.imgur.com/yWG6rEN.png", date: "2024.07.01~03", msg: "제주에서 또 한 컷 📸" },
+                { name: "경주", lat: 35.8562, lng: 129.2247, img: "https://i.imgur.com/p4TmozY.png", date: "2025.02.03", msg: "경주 데이트 🏛️" },
+                { name: "구례", lat: 35.2036, lng: 127.4645, img: "https://i.imgur.com/GW2WCGD.png", date: "2025.04.04", msg: "벚꽃 핑크빛 가득한 구례 🌸" },
+
+                { name: "화순", lat: 35.0604, lng: 126.9902, img: "https://i.imgur.com/uPqR5ht.png", date: "2022.06.01", msg: "초여름 햇살 아래 화순 만연리 ☀️" },
+                { name: "논산", lat: 36.1584, lng: 127.1215, img: "https://i.imgur.com/ldu37eo.png", date: "2022.12.11", msg: "겨울 논산에서의 하루 ❄️" },
+                { name: "보령", lat: 36.2962, lng: 126.5470, img: "https://i.imgur.com/TVn8mHD.png", date: "2023.05.11", msg: "바다와 햇살, 하만리 🌊" },
+                { name: "고창", lat: 35.37538328506269, lng: 126.54369791636655, img: "https://i.imgur.com/FTKcCAd.png", date: "2023.05.17", msg: "드라마 촬영지랑 우유 먹은 곳" },
+                { name: "거제 외도보타니아", lat: 34.76923392603689, lng: 128.71160609469007, date: "2023.09.11", msg: "식물원과 바다의 거제 외도보타니아 🌿" },
+                { name: "화순", lat: 35.17429106415474, lng: 127.13931730852057, img: "https://i.imgur.com/QHb6Oj0.png", date: "2023.12.25", msg: "크리스마스의 눈썰매장 🎄" },
+                { name: "서울", lat: 37.5796, lng: 126.9930, img: "https://i.imgur.com/QRZ2FvO.png", date: "2024.02.15", msg: "서울 골목, 동승동 🏙️" },
+                { name: "해남", lat: 34.5698, lng: 126.6221, img: "https://i.imgur.com/8edCuzl.png", date: "2024.04.13", msg: "해남의 고요한 고현리 🐚" },
+                { name: "영광", lat: 35.340311204135446, lng: 126.38647565023697, img: "https://i.imgur.com/fZ5pI9m.png", date: "2022.03.02", msg: "영광의 카페 맛집 카페보리" },
+                { name: "장성", lat: 35.3018576771354, lng: 126.784918877012, img: "https://i.imgur.com/ulnjFaR.png", date: "2022.12.07", msg: "장성" },
+                { name: "함평", lat: 35.08521876322354, lng: 126.4412127412713, img: "https://i.imgur.com/iEs5EGQ.png", date: "2021.12.14", msg: "이 사진이 무슨 의민지는 알거라 믿음." },
+                { name: "담양", lat: 35.32204324641533, lng: 127.00289236453375, img: "https://i.imgur.com/bbgdAwt.png", date: "2023.09.10", msg: "이때 쫌 말랐는데 ?" },
+                { name: "부산", lat: 35.1630666685425, lng: 129.16359608401, img: "https://i.imgur.com/bfkWGDz.png", date: "2025.02.23", msg: "올해 부산에서 보낸 내 생일" },
+                { name: "군산", lat: 35.9674665619218, lng: 126.736840487468, img: "https://i.imgur.com/k9BXEWG.png", date: "2022.05.29", msg: "아마 곰돌이랑 뭔가 많이 본 듯." },
+                { name: "경상남도 하동", lat: 34.98027477584651, lng: 127.89560601346898, img: "https://i.imgur.com/aX5Lqxs.png", date: "2024.08.01", msg: "강민정 겁나 삐졌던 날" }
+
+            ];
+
+            places.forEach(place => {
+                const popupContent = `
+            <div style="text-align:center; width:200px">
+              <h3 style="margin-bottom:0.3rem; font-size:1.2rem;">${place.name}</h3>
+              <img src="${place.img}" style="width:100%; border-radius: 10px; margin-bottom:0.5rem;">
+              <p style="margin:0.2rem 0; font-weight:bold;">${place.date}</p>
+              <p style="font-family: 'Nanum Pen Script', cursive; font-size:1.1rem;">${place.msg}</p>
+            </div>
+          `;
+                L.marker([place.lat, place.lng])
+                    .addTo(map)
+                    .bindPopup(popupContent, { autoClose: false, closeOnClick: false });
+            });
+        });
+    </script>
     <section id="quiz">
         <h2>🧠 퀴즈 타임!</h2>
         <div class="question">
@@ -160,15 +235,59 @@
 
     <section id="ending" style="display:none; background:#fff0f6; padding:4rem 2rem; text-align:center;">
         <h2 style="font-size:2.5rem;">🎊 민정아, 생일 축하해</h2>
-        <p style="font-size:1.6rem; max-width:600px; margin:auto; line-height:1.8;">
-            오늘 너를 위해 만든 이 페이지는,<br />
-            우리의 모든 추억과 마음을 담은 작은 선물이야.<br />
-            생일 축하해. <br />
-            - 승철이가 -
-        </p>
+        <p id="ending-typewriter" style="font-size:1.6rem; max-width:600px; margin:auto; line-height:1.8; font-family:'Nanum Pen Script', cursive;"></p>
     </section>
 
+
+
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // 타자 효과를 줄별로 적용하고, 첫 줄만 강조
+        const introLines = [
+            `<span style="font-size:2.4rem;">민정아, 생일 축하해!</span>`,
+            "늘 고마워, 그리고 오늘은 너의 날이니까",
+            "조금은 더 행복했으면 좋겠어",
+            "생일 축하해 민정아"
+        ];
+
+        let introLineIdx = 0;
+        let charIdx = 0;
+
+        function typeIntroLine() {
+            const el = document.getElementById("intro-typewriter");
+            if (introLineIdx >= introLines.length) return;
+
+            const line = introLines[introLineIdx];
+
+            // 태그 포함된 라인은 innerHTML로 쪼개 처리
+            if (line.includes("<span")) {
+                // HTML 전체 라인을 한번에 넣고 다음 줄로 넘어감
+                el.innerHTML += line + "<br/>";
+                introLineIdx++;
+                setTimeout(typeIntroLine, 800); // 간격
+            } else {
+                // 일반 줄일 경우 타자 효과
+                if (charIdx < line.length) {
+                    el.innerHTML += line.charAt(charIdx);
+                    charIdx++;
+                    setTimeout(typeIntroLine, 50);
+                } else {
+                    el.innerHTML += "<br/>";
+                    introLineIdx++;
+                    charIdx = 0;
+                    setTimeout(typeIntroLine, 500);
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("intro-typewriter").innerHTML = "";
+            typeIntroLine();
+        });
+    </script>
+
+
     <script>
         let score = 0;
         let answered = 0;
@@ -196,10 +315,30 @@
             else if (score >= 7) msg = "👏 거의 다 맞췄네요.";
             else if (score >= 5) msg = "😅  평균 ?? ";
             else msg = "🫢 강민정 삐졌을 수도 있음ㅋㅋ";
+
             result.innerText = `🎉 퀴즈 결과: ${score} / 10 문제 맞춤.\n${msg}`;
             document.getElementById("ending").style.display = "block";
             document.getElementById("ending").scrollIntoView({ behavior: "smooth" });
+
+            // ✅ 엔딩 타자 효과
+            const endingText = "오늘 너를 위해 만든 이 페이지는,\n우리의 모든 추억과 마음을 담은 작은 선물이야.\n생일 축하해.\n- 승철이가 -";
+            let endIdx = 0;
+            const endEl = document.getElementById("ending-typewriter");
+            endEl.innerHTML = "";
+
+            function typeEnding() {
+                if (endIdx < endingText.length) {
+                    const ch = endingText.charAt(endIdx);
+                    endEl.innerHTML += ch === "\n" ? "<br/>" : ch;
+                    endIdx++;
+                    setTimeout(typeEnding, 60);
+                }
+            }
+
+            typeEnding();
         }
+
+
 
         const swiper = new Swiper(".mySwiper", {
             loop: true,
@@ -212,5 +351,40 @@
             },
         });
     </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            tsParticles.load("particles", {
+                fullScreen: {
+                    enable: false
+                },
+                particles: {
+                    number: { value: 40 },
+                    shape: {
+                        type: "char",
+                        character: {
+                            value: ["❤"],
+                            font: "Verdana",
+                            style: "",
+                            weight: "400"
+                        }
+                    },
+                    size: { value: 16 },
+                    color: { value: "#ff7eb9" },
+                    opacity: { value: 0.7 },
+                    move: {
+                        enable: true,
+                        speed: 1,
+                        direction: "bottom",
+                        outModes: { default: "out" }
+                    }
+                },
+                detectRetina: true
+            });
+        });
+    </script>
+
 </body>
 </html>
